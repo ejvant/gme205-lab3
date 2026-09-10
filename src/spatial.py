@@ -66,3 +66,24 @@ class Point:
         )
 
         return R * c
+
+    @classmethod
+    def from_dict(cls, d: dict):
+        # Read/convert the external representation here.
+        # Then call cls(...) so __init__ remains the validation boundary.
+        return cls(
+            id=d["id"],
+            lon=d["lon"],
+            lat=d["lat"],
+            name=d.get("name"),
+            tag=d.get("tag")
+        )
+
+    def as_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "tag": self.tag,
+            "geometry": [self.lon, self.lat],
+            "bbox": list(self.geometry.bounds)
+        }
