@@ -11,6 +11,7 @@ class SpatialObject:
     def bbox(self):
         return self.geometry.bounds
 
+    # Challenge 3
     def intersects(self, other):
         return self.geometry.intersects(other.geometry)
 
@@ -79,6 +80,7 @@ class Point(SpatialObject):
 
         return R * c
 
+    # Challenge 1
     @classmethod
     def from_dict(cls, d: dict):
         # Read/convert the external representation here.
@@ -91,6 +93,7 @@ class Point(SpatialObject):
             tag=d.get("tag")
         )
 
+    # Challenge 2 (Point.as_dict)
     def as_dict(self):
         return {
             "id": self.id,
@@ -106,6 +109,7 @@ class Parcel(SpatialObject):
         self.parcel_id = parcel_id
         self.attributes = attributes
 
+    # Challenge 2 (Parcel.as_dict)
     def as_dict(self):
         return {
             "parcel_id": self.parcel_id,
