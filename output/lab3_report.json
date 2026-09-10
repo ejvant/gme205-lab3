@@ -1,0 +1,35 @@
+{
+  "point": {
+    "id": "P1",
+    "name": "Quezon Hall",
+    "tag": "poi",
+    "geometry": [
+      121.058,
+      14.6507
+    ],
+    "bbox": [
+      121.058,
+      14.6507,
+      121.058,
+      14.6507
+    ]
+  },
+  "parcel": {
+    "parcel_id": 101,
+    "bbox": [
+      0.0,
+      0.0,
+      10.0,
+      5.0
+    ],
+    "attributes": {
+      "area": 50.0,
+      "zone": "Residential",
+      "is_active": true
+    }
+  },
+  "relationships": {
+    "inside_intersects_parcel": true,
+    "outside_intersects_parcel": false
+  }
+}

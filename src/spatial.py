@@ -85,8 +85,8 @@ class Point(SpatialObject):
         # Then call cls(...) so __init__ remains the validation boundary.
         return cls(
             id=d["id"],
-            lon=d["lon"],
-            lat=d["lat"],
+            lon=float(d["lon"]),
+            lat=float(d["lat"]),
             name=d.get("name"),
             tag=d.get("tag")
         )
