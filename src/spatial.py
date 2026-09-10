@@ -99,3 +99,16 @@ class Point(SpatialObject):
             "geometry": [self.lon, self.lat],
             "bbox": list(self.geometry.bounds)
         }
+
+class Parcel(SpatialObject):
+    def __init__(self, parcel_id, geometry, attributes: dict):
+        super().__init__(geometry)
+        self.parcel_id = parcel_id
+        self.attributes = attributes
+
+    def as_dict(self):
+        return {
+            "parcel_id": self.parcel_id,
+            "bbox": list(self.geometry.bounds),
+            "attributes": self.attributes,
+        }

@@ -1,5 +1,5 @@
-from spatial import Point
-
+from spatial import Point, Parcel
+from shapely.geometry import Polygon
 
 # B.4 — Important Technical Rule: Shapely Distance Is Planar
 
@@ -53,3 +53,35 @@ print(p.as_dict())
 
 p = Point("A", 121.0, 14.6)
 print(p.bbox())
+
+# E.2 — Create a Parcel Geometry
+
+attributes = {
+    "area": 50.0,
+    "zone": "Residential",
+    "is_active": True
+}
+
+geom = Polygon([
+    (0, 0),
+    (10, 0),
+    (10, 5),
+    (0, 5)
+])
+
+parcel = Parcel(101, geom, attributes)
+
+print(parcel.bbox())
+
+# E.3 — Parcel as_dict()
+
+print("Parcel as dict:")
+print(parcel.as_dict())
+
+# E.4 — Test spatial relationship
+
+inside = Point("IN", 2, 2)
+outside = Point("OUT", 12, 2)
+
+print(inside.intersects(parcel))   # True
+print(outside.intersects(parcel))  # False
