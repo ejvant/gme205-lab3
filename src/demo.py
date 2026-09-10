@@ -46,4 +46,10 @@ print(p_from_dict.tag)
 
 # C.2 — Convert Point to a dictionary
 
+print("As dict:")
 print(p.as_dict())
+
+# D.3 — Test inherited bbox()
+
+p = Point("A", 121.0, 14.6)
+print(p.bbox())

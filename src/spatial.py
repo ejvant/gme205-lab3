@@ -2,8 +2,19 @@ import math
 
 from shapely.geometry import Point as ShapelyPoint
 
+class SpatialObject:
+    """Base abstraction for domain objects that have geometry."""
 
-class Point:
+    def __init__(self, geometry):
+        self.geometry = geometry
+
+    def bbox(self):
+        return self.geometry.bounds
+
+    def intersects(self, other):
+        return self.geometry.intersects(other.geometry)
+
+class Point(SpatialObject):
     def __init__(self, id, lon, lat, name=None, tag=None):
         # Coordinate validation
         if not (-180 <= lon <= 180):
@@ -13,7 +24,8 @@ class Point:
             raise ValueError("Latitude must be between -90 and 90")
 
         self.id = id
-        self.geometry = ShapelyPoint(lon, lat)
+        geometry = ShapelyPoint(lon, lat)
+        super().__init__(geometry)
         self.name = name
         self.tag = tag
 
